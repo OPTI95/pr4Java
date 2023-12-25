@@ -84,7 +84,29 @@
         </tr>
         </tbody>
     </table>
+
+    <!-- Display orders for the customer -->
+    <h3>Orders</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Order Number</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.orderNumber}"></td>
+            <td th:text="${order.orderDate}"></td>
+            <td th:text="${order.totalAmount}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

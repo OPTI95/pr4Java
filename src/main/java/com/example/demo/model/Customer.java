@@ -3,6 +3,8 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "Customer")
@@ -11,7 +13,8 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
     @NotBlank(message = "Имя обязательно для заполнения")
     @Size(max = 255, message = "Имя должно содержать не более 255 символов")
     @Column(name = "firstName")
@@ -67,5 +70,13 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

@@ -1,11 +1,14 @@
     package com.example.demo.controllers;
     import com.example.demo.model.Customer;
+    import com.example.demo.model.Order;
     import com.example.demo.repositories.CustomerRepository;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
     import org.springframework.validation.BindingResult;
     import org.springframework.web.bind.annotation.*;
+
+    import java.util.List;
 
 
     @Controller
@@ -26,10 +29,13 @@
         @GetMapping("/{id}")
         public String showCustomerDetails(@PathVariable Long id, Model model) {
             Customer customer = customerRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Invalid customer Id:" + id));
+                    .orElseThrow(() -> new IllegalArgumentException("Неверный идентификатор клиента:" + id));
+            List<Order> orders = customer.getOrders();
             model.addAttribute("customer", customer);
+            model.addAttribute("orders", orders);
             return "customer/customerDetails";
         }
+
 
         @GetMapping("/new")
         public String showCustomerForm(Model model) {

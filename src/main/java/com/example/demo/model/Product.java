@@ -2,6 +2,8 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "Product")
@@ -10,6 +12,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders;
 
     @NotBlank(message = "Название продукта обязательно для заполнения")
     @Size(max = 255, message = "Название продукта должно содержать не более 255 символов")

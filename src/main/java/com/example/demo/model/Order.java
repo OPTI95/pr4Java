@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "OrderTable")
@@ -13,7 +14,17 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
+    @ManyToMany
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products;
     @NotBlank(message = "Номер заказа обязателен для заполнения")
     @Size(max = 255, message = "Номер заказа должен содержать не более 255 символов")
     @Column(name = "orderNumber")

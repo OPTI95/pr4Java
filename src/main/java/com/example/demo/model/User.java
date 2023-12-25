@@ -9,7 +9,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @OneToOne()
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    private Employee employee;
     @NotBlank(message = "Имя пользователя обязательно для заполнения")
     @Size(max = 255, message = "Имя пользователя должно содержать не более 255 символов")
     @Column(name = "username")

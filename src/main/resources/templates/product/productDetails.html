@@ -1,11 +1,11 @@
-<!-- orderDetails.html -->
+<!-- productDetails.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Order Details</title>
+    <title>Product Details</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -67,22 +67,22 @@
 
 <!-- Page Content -->
 <div class="container mt-3">
-    <h2>Order Details</h2>
+    <h2>Products Details</h2>
     <table class="table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Order Number</th>
-            <th>Order Date</th>
-            <th>Total Amount</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td th:text="${order.id}"></td>
-            <td th:text="${order.orderNumber}"></td>
-            <td th:text="${order.orderDate}"></td>
-            <td th:text="${order.totalAmount}"></td>
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
         </tr>
         </tbody>
     </table>

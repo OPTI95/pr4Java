@@ -10,7 +10,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @OneToOne(mappedBy = "employee")
+    private User user;
     @NotBlank(message = "Имя обязательно для заполнения")
     @Size(max = 255, message = "Имя должно содержать не более 255 символов")
     @Column(name = "firstName")
